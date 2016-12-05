@@ -26,7 +26,7 @@
 			//$track = date("Y-m-d h:i:sa");
 		
 			echo ($digest);
-			$sql = ("SELECT * FROM  user WHERE username = '$theuname' AND password_digest = '$digest");
+			$sql = ("SELECT * FROM  user WHERE username = $theuname AND password_digest = $digest");
 		
 			$results= mysql_query($sql);
 		
