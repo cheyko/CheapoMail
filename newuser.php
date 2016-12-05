@@ -3,7 +3,7 @@
 		include ('connecting.php');
 		
 		// defining the variables and set they were set to empty values
-		$fname = $lname = $uname = $pword = $thesalt = $digest = $track = "";
+		$fname = $lname = $uname = $pword = $seek = $digest = "";
 		
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$fname = test_input($_POST["firstname"]);
@@ -11,17 +11,12 @@
 			$uname = test_input($_POST["username"]);
 			//$email = test_input($_POST["email"]);
 			
-			$pword = ($_POST["password"]);
-			$thesalt = mt_rand();
-			$digest = md5($pword.$thesalt);
+			$pword = test_input($_POST["password"]);
+			$seek = test_input($_POST["hide"]);
+			$digest = md5($pword);
 			
-			date_default_timezone_set("America/Jamaica");
-			$track = date("Y-m-d h:i:sa");
-		
+			mysql_query("INSERT INTO user(firstname, lastname, username, password_digest) VALUES ('$fname', '$lname', '$uname', '$digest')");
 			
-			mysql_query("INSERT INTO user(firstname, lastname, username, last_login, password_digest, salt) VALUES ('$fname', '$lname', '$uname', '$track', '$digest', '$thesalt')");
-			
-			//write a mysql_query to get id created for current user by searching in database where  $uname exist  
 			
 			//last_login, value -> $track
 			mysql_close($database);

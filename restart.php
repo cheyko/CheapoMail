@@ -20,7 +20,7 @@ nes (24 sloc)  750 Bytes
 			</main>
 
       <div = "footer">
-        <p class="text-muted">CHEYKO-DON WEB DEVELOPMENTS COMP2190 Copyright &copy; 2017 .</p>
+       <p class="text-muted"> AJAX GROUP ..... ("A" for Ariel, "J" for Jalan and "AX" for AleX)  <br> </br>INFO2180 Group Project Copyright &copy; 2016 </p>
       </div>
     </div>
 	</body>

@@ -1,0 +1,24 @@
+
+<?php
+	session_start();
+	include('connecting.php');
+	
+	// defining the variables and set they were set to empty values
+		$id = $subject = $body = $recipient_ids = "";
+		
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			$id=$_SESSION['SESS_USERID'];
+			$subject=$_POST['subject'];
+			$body=$_POST['body'];
+			$recipient_ids=$_POST['recipient_ids'];	
+			
+			$m_id=mysql_query("SELECT MAX(message_id) FROM message_read");
+			$currentdate=mysql_query("SELECT NOW()");
+			
+			mysql_query("INSERT INTO message (body, subject, recipient_ids, user_ID, date_sent)VALUES('$body', '$subject', '$recipient_ids', '$id, $currentdate')");
+			mysql_query("INSERT INTO message_read (message_id, reader_id, the_date)VALUES('$m_id', '$recipient_ids', '$currentdate')");
+			
+			header("Location: Homepage.php");
+			
+		}
+?>
