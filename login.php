@@ -25,13 +25,13 @@
 			//date_default_timezone_set("America/Jamaica");
 			//$track = date("Y-m-d h:i:sa");
 		
-			echo ($digest);
+			//echo ($digest);
 			$sql = ("SELECT * FROM  user WHERE username = '$theuname' AND password_digest = '$digest'");
 		
 			$results= mysql_query($sql);
 		
-			echo($results);
-			echo('<br>testing');
+			//echo($results);
+			//echo('<br>testing');
 				
 		
 		if ($results){
@@ -45,14 +45,15 @@
 				header("Location: Homepage.php");
 				exit();
 			}else {
-				echo("Username or password invalid <br>");
-				header("Location: login.html");
+				
+				include_once('login.html');
+				die("<br>Username or password invalid <br>PLease try again or GO BACK ");
 				exit();
 			}
 		}else{
-			die("Username or password invalid <br>PLease try again or GO BACK (<--)");
-			header('login.html');
 			
+			include_once('login.html');
+			die("Username or password invalid <br>PLease try again or GO BACK (<--)");
 			
 		}
 		mysql_close($database);
