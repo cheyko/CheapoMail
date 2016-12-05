@@ -26,7 +26,7 @@
 			//$track = date("Y-m-d h:i:sa");
 		
 			echo ($digest);
-			$sql = ("SELECT * FROM  user WHERE username = $theuname AND password_digest = $digest");
+			$sql = ("SELECT * FROM  user WHERE username = '$theuname' AND password_digest = '$digest'");
 		
 			$results= mysql_query($sql);
 		
@@ -42,7 +42,7 @@
 				$_SESSION['SESS_UNAME'] = $one['username'];
 				$_SESSION['SESS_USERID'] = $one['id'];
 				session_write_close();
-				include_once("Location: Homepage.php");
+				header("Location: Homepage.php");
 				exit();
 			}else {
 				echo("Username or password invalid <br>");
@@ -50,8 +50,9 @@
 				exit();
 			}
 		}else{
-			include_once('login.html');
 			die("Username or password invalid <br>PLease try again or GO BACK (<--)");
+			header('login.html');
+			
 			
 		}
 		mysql_close($database);
