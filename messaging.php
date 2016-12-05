@@ -10,13 +10,18 @@
 			$id=$_SESSION['SESS_USERID'];
 			$subject=$_POST['subject'];
 			$body=$_POST['body'];
-			$recipient_ids=$_POST['recipient_ids'];	
+			
+			$auser = $_POST['uname'];
+			$recipient_ids=(mysql_query("SELECT id FROM user where username = '$auser'"));
+			//$recipient_ids=$_POST['recipients_id'];	
 			
 			$m_id=mysql_query("SELECT MAX(message_id) FROM message_read");
-			$currentdate=mysql_query("SELECT NOW()");
+			date_default_timezone_set("America/Jamaica");
+			$currentdate = date("Y-m-d h:i:sa");
+			//$currentdate=mysql_query("SELECT NOW()");
 			
-			mysql_query("INSERT INTO message (body, subject, recipient_ids, user_ID, date_sent)VALUES('$body', '$subject', '$recipient_ids', '$id, $currentdate')");
-			mysql_query("INSERT INTO message_read (message_id, reader_id, the_date)VALUES('$m_id', '$recipient_ids', '$currentdate')");
+			mysql_query("INSERT INTO message (body, subject, recipients_id, users_id, date_sent)VALUES('$body', '$subject', '$recipient_ids', '$id', '$currentdate')");
+			mysql_query("INSERT INTO message_read (message_id, readers_id, the_date)VALUES('$m_id', '$recipient_ids', '$currentdate')");
 			
 			header("Location: Homepage.php");
 			

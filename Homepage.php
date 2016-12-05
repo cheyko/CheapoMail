@@ -76,8 +76,8 @@
 			<div id="compose" name="send"  >
 			<h2>Send Message</h2>
 				
-				<label>Enter Username of recipient:<input type="text" name="uname"  placeholder="Must be a cheapomail user, nuh stranger to the ting" required /><br></br> </label>
-				<label>Subject:<input type="text" name="subject"  placeholder="Enter Message Subject" required /><br></br> </label>
+				<label>Enter Username of recipient:<input type="text" size = "50" name="uname"  placeholder="Must be a cheapomail user, nuh stranger to the ting" required /><br></br> </label>
+				<label>Subject:<input type="text" size = "50" name="subject"  placeholder="Enter Message Subject" required /><br></br> </label>
 				<label>Body: <br><textarea rows = "10" cols="100" type="text" name="body" placeholder="Enter Message"/></textarea><br></br></label>
 				<label><input type="submit" value="Submit"></label>
 				

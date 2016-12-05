@@ -23,6 +23,11 @@ body{
   text-align:right;
   width:750px;
 }
+
+input[type=text] {
+    border: 2px solid blue;
+    border-radius: 4px;
+}
 /*
 	
 table{
