@@ -9,9 +9,7 @@ CREATE TABLE user
 	firstname char(20) NOT NULL default '',
 	lastname char(20) NOT NULL default '',
 	username char(20) NOT NULL,
-	last_login DATETIME(0),
     password_digest VARCHAR(64),
-    salt VARCHAR(64),
 	PRIMARY KEY (id)
 
 );
@@ -38,7 +36,9 @@ CREATE TABLE message_read
 
 LOCK TABLE user WRITE;
 
-INSERT INTO user(id, firstname, lastname, username, password_digest) VALUES (0000, 'Ajax', 'team', 'admin', 'password');
+INSERT INTO user(firstname, lastname, username, password_digest) VALUES ('Ajax', 'team', 'admin', MD5('password'));
+
+INSERT INTO user(firstname, lastname, username, password_digest) VALUES ('Ajax2', 'team2', 'admin2', 'MD5(password)');
 
 UNLOCK TABLES;
 
